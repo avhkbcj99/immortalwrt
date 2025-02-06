@@ -33,6 +33,20 @@ define Package/firmware-default
   LICENSE_FILES:=$(3)
   LICENSE:=$(4)
 endef
+define Package/linux-firmware-i915
+  $(Package/firmware-default)
+  TITLE:=Intel i915 firmware
+  DEPENDS:=@TARGET_x86
+endef
+
+define Package/linux-firmware-i915/install
+  $(INSTALL_DIR) $(1)/lib/firmware/i915
+  $(INSTALL_DATA) \
+    $(PKG_BUILD_DIR)/i915/glk_dmc_ver1_04.bin \
+    $(1)/lib/firmware/i915/
+endef
+
+$(eval $(call BuildPackage,linux-firmware-i915))
 
 define Build/Compile
 
