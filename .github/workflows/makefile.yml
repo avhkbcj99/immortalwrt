@@ -14,11 +14,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: cd immortalwrt && ./scripts/feeds update -a
-      run: cd immortalwrt && ./scripts/feeds update -a
+    - name: ./scripts/feeds update -a
+      run: ./scripts/feeds update -a
 
-    - name: cd immortalwrt && ./scripts/feeds install -a
-      run: cd immortalwrt && ./scripts/feeds install -a
+    - name: ./scripts/feeds install -a
+      run: ./scripts/feeds install -a
 
-    - name: Run make
+    - name: make
       run: make
